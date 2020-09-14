@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!--  +++++++++++++++++++++++++++++++++++++++++++++
+
+This file is one of a suite of configuration files ...
+  context.xml
+  web.xml
+  tomcat_user.xml
+  server.xml
+that we set up on our "deploying Apache httpd and Tomcat" course to
+configure Tomcat and web applications that are running within it.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++  -->
+
+<!-- The contents of this file will be loaded for each web application -->
+
+<Context reloadable="true" privileged="true">
+
+<!-- **** Note - we have added in the reloadable and privileged attributes
+to enable the invoker servlet and cgi support (other changes needed in
+web.xml too for that, though **** -->
+
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+    <Resource name="jdbc/mssql"
+            auth="Container"
+            type="javax.sql.DataSource"
+            username="mujeeb"
+            password="Mummy@123"
+            driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+            url="jdbc:sqlserver://masjidserver.database.windows.net:1433;databaseName=masjid;user=mujeeb;password=Mummy@123;"
+            maxActive="8"
+            maxIdle="4"/>
+</Context>
